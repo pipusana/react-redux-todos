@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Todoitem from './component/Todoitem'
+import Todolist from './component/Todolist'
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-     <div />
+     <div>
+      <Todoitem />
+      <Todolist />
+     </div>
     );
   }
 }
