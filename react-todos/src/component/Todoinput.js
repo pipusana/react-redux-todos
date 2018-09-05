@@ -17,16 +17,24 @@ export default class Todoinput extends Component {
   }
 
   render() {
+    const disabled = this.props.listItems.length > 0 ? false : true; 
+   
     return (
       <div>
         <input 
           value={ this.state.item }
-          onChange={ (e) => this.setState({item: e.target.value}) }
+          onChange={ (e) => this.setState({ item: e.target.value }) }
         />
         <button 
           onClick={ this.handleClick }
         > 
           Add 
+        </button>
+        <button 
+          onClick={ this.props.deleteItem }
+          disabled={ disabled }
+        > 
+          Delete 
         </button>
       </div>
     );

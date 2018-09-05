@@ -11,19 +11,35 @@ class App extends Component {
     };
 
     this.addItem = this.addItem.bind(this);
+    this.changeModeitem = this.changeModeitem.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   addItem(item) {
     let { listItems } = this.state;
-    listItems.push(item)
+    const formattedItem = {
+      value: item,
+      mode: false,
+    }
+    listItems.push(formattedItem)
     this.setState({ listItems })
+  }
+
+  deleteItem() {
+    let { listItems } = this.state;
+    listItems.pop()
+    this.setState({ listItems })
+  }
+
+  changeModeitem(listItems) {
+    this.setState({ listItems });
   }
 
   render() {
     return (
      <div>
-      <TodoInput addItem={this.addItem} />
-      <Todolist listItems={this.state.listItems} />
+      <TodoInput listItems={this.state.listItems} addItem={this.addItem} deleteItem={this.deleteItem}/>
+      <Todolist listItems={this.state.listItems} changeModeitem={this.changeModeitem}/>
      </div>
     );
   }
