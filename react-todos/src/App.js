@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import Todoitem from './component/Todoitem'
+import TodoInput from './component/Todoinput'
 import Todolist from './component/Todolist'
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   render() {
     return (
      <div>
-      <Todoitem />
+      <TodoInput />
       <Todolist />
      </div>
     );
