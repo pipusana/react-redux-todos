@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 
 export default class Todolist extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div>
         <ul>
-          <li> Hello world !! </li>
-          <li> Hello world !! </li>
-          <li> Hello world !! </li>
+          { this.props.listItems.map((itme, index) => {
+            return (
+              <li key={index}> {itme} </li>
+            )
+          })}
         </ul>
       </div>
     );

@@ -6,13 +6,24 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      listItems: [],
+    };
+
+    this.addItem = this.addItem.bind(this);
+  }
+
+  addItem(item) {
+    let { listItems } = this.state;
+    listItems.push(item)
+    this.setState({ listItems })
   }
 
   render() {
     return (
      <div>
-      <TodoInput />
-      <Todolist />
+      <TodoInput addItem={this.addItem} />
+      <Todolist listItems={this.state.listItems} />
      </div>
     );
   }
