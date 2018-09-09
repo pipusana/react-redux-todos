@@ -1,27 +1,17 @@
 import React, { Component } from 'react';
-import { loadPages } from './action/todos'
-import { connect } from 'react-redux'
 import './App.css';
+import TodoInput from './components/TodoInput'
+import TodoList from './components/TodoLists'
 
 class App extends Component {
   render() {
     return (
-      <div />
+      <div>
+        <TodoInput />
+        <TodoList />
+      </div>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
-  todoslist: 'aaaaaaa'
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  onLoadPages() {
-    dispatch(loadPages())
-  }
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App)
+export default App;
