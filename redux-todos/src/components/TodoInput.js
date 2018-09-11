@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addTodoList, changeName, clearName, deleteTodoList } from '../actions/todoslist';
+import { updateList, changeName, clearName } from '../actions/todoslist';
 import { connect } from 'react-redux'
 
 class Todoinput extends Component {
@@ -18,7 +18,7 @@ class Todoinput extends Component {
       mode: false,
     }
     list.push(formattedItem)
-    this.props.addTodoList(list)
+    this.props.updateList(list)
     this.props.clearName()
   }
 
@@ -29,7 +29,7 @@ class Todoinput extends Component {
   deleteItemlist() {
     let list = [ ...this.props.todoslist.list ];
     list.pop()
-    this.props.deleteTodoList(list)
+    this.props.updateList(list)
   }
 
   render() {
@@ -65,14 +65,11 @@ const mapStateToProps = ((state) => {
 
 const mapDispatchToProps = ((dispatch) => {
   return {
-    addTodoList: ((list) => {
-      dispatch(addTodoList(list))
+    updateList: ((list) => {
+      dispatch(updateList(list))
     }),
     changeName: ((name) => {
       dispatch(changeName(name))
-    }),
-    deleteTodoList: ((list) => {
-      dispatch(deleteTodoList(list))
     }),
     clearName: (() => {
       dispatch(clearName())

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { changeMode } from '../actions/todoslist';
+import { updateList } from '../actions/todoslist';
 import { connect } from 'react-redux'
 
 class TodoLists extends Component {
   handleChangemode(index, mode) {
     let list = this.props.todoslist.list;
     list[index].mode = !mode;
-    this.props.changeMode(list);
+    this.props.updateList(list);
   }
 
   render() {
@@ -35,8 +35,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  changeMode: ((list) => {
-    dispatch(changeMode(list))
+  updateList: ((list) => {
+    dispatch(updateList(list))
   }),
 })
 
