@@ -4,8 +4,6 @@ import { Provider } from 'react-redux'
 import Routes from './routes'
 import { configureStore } from './store/configureStore'
 
-import App from './App'
-
 const store = configureStore()
 
 render(

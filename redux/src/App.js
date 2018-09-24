@@ -2,66 +2,62 @@ import React, { Component } from 'react';
 import { createStore } from 'redux';
 import './App.css';
 
-const initialstate = {
+const initialState = {
   result: 0,
-} 
+}
 
-const reducer = (state=initialstate, action) => {
-  switch (action.type) {
+const reducer = (state=initialState, action) => {
+  switch(action.type) {
     case 'ADD':
-    return {
-        ...state,
-        result: state.result + action.payload
-      }
-    case 'SUBTRACT':
       return {
         ...state,
-        result: state.result - action.payload
+        result: state.result + action.value,
+      }
+    case 'SUB':
+      return {
+        ...state,
+        result: state.result - action.value,
       }
     default:
-      return state;
-  };
-};
+      return state
+  }
+}
 
-const store = createStore(reducer); //initialstate
+const store = createStore(reducer);
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleClickAdd() {
-    store.dispatch({
-      type: "ADD",
-      payload: 500,
-    });
+    const action = {
+      type: 'ADD',
+      value: 500,
+    }
+
+    console.log('Add action', action);
+    store.dispatch(action)
   }
 
-  handleClickSubtract() {
-    store.dispatch({
-      type: "SUBTRACT",
-      payload: 500,
-    });
-  }
+  handleClickSub() {
+    const action = {
+      type: 'SUB',
+      value: 500,
+    }
 
+    console.log('SUB action', action);
+    store.dispatch(action)
+  }
 
   componentDidMount() {
-    console.log('componentDidMount');
     store.subscribe(() => {
+      this.forceUpdate();
     });
   }
 
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-  
   render() {
-    console.log('<<<< render store >>>>', store.getState())
     return (
       <div className="App">
-        <h1> { store.getState().result } </h1>
-        <button onClick={this.handleClickAdd} > + 500 </button>
-        <button onClick={this.handleClickSubtract} > - 500 </button>
+       <h1> { store.getState().result } </h1>
+       <button onClick={ this.handleClickAdd } > +500 </button>
+       <button onClick={ this.handleClickSub } > -500 </button>
       </div>
     );
   }
