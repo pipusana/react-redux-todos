@@ -1,28 +1,28 @@
 const initialState = {
   list: [],
-  itemName: '',
-}
+  itemName: ""
+};
 
 const todos = (state = initialState, action) => {
   switch (action.type) {
-    case 'CHANGE_NAME':
+    case "CHANGE_NAME":
       return {
         ...state,
         itemName: action.name
-      }
-    case 'UPDATE_LIST':
+      };
+    case "UPDATE_LIST":
       return {
         ...state,
-        list: [ ...action.list ]
-      }
-    case 'CLEAR_NAME':
+        list: [...action.list]
+      };
+    case "CLEAR_NAME":
       return {
         ...state,
-        itemName: ''
-      }
+        itemName: ""
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default todos
+export default todos;
