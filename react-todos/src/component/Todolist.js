@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class Todolist extends Component {
   constructor(props) {
@@ -17,16 +17,21 @@ export default class Todolist extends Component {
     return (
       <div>
         <ul>
-          { this.props.listItems.map((itme, index) => {
-            const textStyle = (itme.mode) ? { textDecoration: 'line-through' } : {}
+          {this.props.listItems.map((itme, index) => {
+            const textStyle = itme.mode
+              ? { textDecoration: "line-through" }
+              : {};
             return (
               <div key={index}>
-                <li> 
-                   <input type='checkbox' onClick={e => this.handleChangemode(index, itme.mode)} />
-                  <label style={ textStyle }> {itme.value} </label>
+                <li>
+                  <input
+                    type="checkbox"
+                    onClick={e => this.handleChangemode(index, itme.mode)}
+                  />
+                  <label style={textStyle}> {itme.value} </label>
                 </li>
               </div>
-            )
+            );
           })}
         </ul>
       </div>
